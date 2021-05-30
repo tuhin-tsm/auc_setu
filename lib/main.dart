@@ -8,7 +8,7 @@ void main() {
   runApp(MaterialApp(
     title: 'My app', // used by the OS task switcher
     home: SafeArea(
-      child: PlayingTable(),
+      child: Scaffold(body: PlayingTable()),
     ),
   ));
 }
