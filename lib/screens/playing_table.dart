@@ -14,7 +14,14 @@ class _PlayingTableState extends State<PlayingTable> {
       decoration: BoxDecoration(
         color: Colors.teal[900],
       ),
-      child: PlayingCard('K', Heart.name),
+      child: Row(
+        children: [
+          PlayingCard('A', Club.name),
+          PlayingCard('K', Heart.name),
+          PlayingCard('J', Diamond.name),
+          PlayingCard('Q', Spade.name),
+        ],
+      ),
     );
   }
 }
