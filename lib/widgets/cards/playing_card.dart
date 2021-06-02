@@ -9,7 +9,7 @@ class PlayingCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const double cardHeight = 222.0;
+    const double cardHeight = 75.0;
     const double cardWidth = cardHeight * 0.7;
     const double iconWidth = cardWidth * 0.5;
 
@@ -28,15 +28,14 @@ class PlayingCard extends StatelessWidget {
             image: AssetImage('assets/images/cards/card_bg_3x.png'),
           ),
           Container(
-              margin: const EdgeInsets.only(bottom: 20.0, top: 20),
               alignment: Alignment.bottomCenter,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Text(
                     rank,
                     style: suitTextStyle.merge(
-                        suitName == Club.name || suitName == Spade.name
+                        suitName == Club.suit || suitName == Spade.suit
                             ? blackTextStyle
                             : redTextStyle),
                   ),

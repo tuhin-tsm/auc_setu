@@ -1,6 +1,10 @@
-import 'package:flutter/material.dart';
-import '../widgets/cards/playing_card.dart';
+import 'package:auc_setu/model/card.dart';
 import 'package:auc_setu/model/suit.dart';
+import 'package:auc_setu/widgets/players/player_east.dart';
+import 'package:auc_setu/widgets/players/player_north.dart';
+import 'package:auc_setu/widgets/players/player_south.dart';
+import 'package:auc_setu/widgets/players/player_west.dart';
+import 'package:flutter/material.dart';
 
 class PlayingTable extends StatefulWidget {
   @override
@@ -8,6 +12,22 @@ class PlayingTable extends StatefulWidget {
 }
 
 class _PlayingTableState extends State<PlayingTable> {
+  List<CardModel> cards = [
+    CardModel(Heart.color, 'A', Heart.suit),
+    CardModel(Heart.color, 'Q', Heart.suit),
+    CardModel(Heart.color, '10', Heart.suit),
+    CardModel(Heart.color, '9', Heart.suit),
+    CardModel(Spade.color, 'K', Spade.suit),
+    CardModel(Spade.color, '8', Spade.suit),
+    CardModel(Diamond.color, 'A', Diamond.suit),
+    CardModel(Diamond.color, 'J', Diamond.suit),
+    CardModel(Diamond.color, '8', Diamond.suit),
+    CardModel(Diamond.color, '6', Heart.suit),
+    CardModel(Club.color, 'J', Club.suit),
+    CardModel(Club.color, '7', Club.suit),
+    CardModel(Club.color, '3', Club.suit),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -16,10 +36,41 @@ class _PlayingTableState extends State<PlayingTable> {
       ),
       child: Row(
         children: [
-          PlayingCard('A', Club.name),
-          PlayingCard('K', Heart.name),
-          PlayingCard('J', Diamond.name),
-          PlayingCard('Q', Spade.name),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 12),
+              child: RotatedBox(
+                quarterTurns: 3,
+                child: PlayerWest(cards),
+              ),
+            ),
+          ),
+          Expanded(
+            flex: 3,
+            child: Column(
+              children: [
+                Expanded(
+                  child: PlayerNorth(cards),
+                ),
+                Expanded(
+                  flex: 2,
+                  child: Container(),
+                ),
+                Expanded(
+                  child: PlayerSouth(cards),
+                ),
+              ],
+            ),
+          ),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 12),
+              child: RotatedBox(
+                quarterTurns: 1,
+                child: PlayerEast(cards),
+              ),
+            ),
+          ),
         ],
       ),
     );
