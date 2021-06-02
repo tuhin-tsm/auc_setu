@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:auc_setu/model/suit.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class PlayingCard extends StatelessWidget {
   final String rank;
@@ -18,36 +19,40 @@ class PlayingCard extends StatelessWidget {
     const blackTextStyle = TextStyle(color: BLACK_SUIT_COLOR);
     const redTextStyle = TextStyle(color: RED_SUIT_COLOR);
 
-    return Center(
-        child: Container(
-      height: cardHeight,
-      width: cardWidth,
-      child: Stack(
-        children: [
-          Image(
-            image: AssetImage('assets/images/cards/card_bg_3x.png'),
+    return InkWell(
+        onTap: () {
+          Fluttertoast.showToast(msg: "$rank of $suitName clicked");
+        },
+        child: Center(
+            child: Container(
+          height: cardHeight,
+          width: cardWidth,
+          child: Stack(
+            children: [
+              Image(
+                image: AssetImage('assets/images/cards/card_bg_3x.png'),
+              ),
+              Container(
+                  alignment: Alignment.bottomCenter,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Text(
+                        rank,
+                        style: suitTextStyle.merge(
+                            suitName == Club.suit || suitName == Spade.suit
+                                ? blackTextStyle
+                                : redTextStyle),
+                      ),
+                      Image(
+                        image: AssetImage(
+                            'assets/images/cards/$suitName/card_${suitName}_3x.png'),
+                        width: iconWidth,
+                      ),
+                    ],
+                  )),
+            ],
           ),
-          Container(
-              alignment: Alignment.bottomCenter,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text(
-                    rank,
-                    style: suitTextStyle.merge(
-                        suitName == Club.suit || suitName == Spade.suit
-                            ? blackTextStyle
-                            : redTextStyle),
-                  ),
-                  Image(
-                    image: AssetImage(
-                        'assets/images/cards/$suitName/card_${suitName}_3x.png'),
-                    width: iconWidth,
-                  ),
-                ],
-              )),
-        ],
-      ),
-    ));
+        )));
   }
 }
