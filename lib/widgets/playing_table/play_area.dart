@@ -1,6 +1,4 @@
 import 'package:auc_setu/model/card.dart';
-import 'package:auc_setu/model/player.dart';
-import 'package:auc_setu/model/suit.dart';
 import 'package:auc_setu/widgets/playing_table/play_area_card.dart';
 import 'package:flutter/material.dart';
 

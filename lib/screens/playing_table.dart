@@ -52,7 +52,7 @@ class _PlayingTableState extends State<PlayingTable> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.teal[900],
+        color: Colors.purple[900],
       ),
       child: Row(
         children: [
