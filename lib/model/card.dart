@@ -1,11 +1,19 @@
-import 'package:flutter/material.dart';
+import 'package:auc_setu/model/player.dart';
 
 class PCardModel {
-  final Color color;
   final String rank;
   final String suit;
 
-  PCardModel(this.color, this.rank, this.suit);
+  PCardModel(this.rank, this.suit);
+}
+
+class CurrentlyPlayingCardModel extends PCardModel {
+  late Player player;
+
+  CurrentlyPlayingCardModel(Player player, String rank, String suit)
+      : super(rank, suit) {
+    this.player = player;
+  }
 }
 
 class PCardDimensions {
