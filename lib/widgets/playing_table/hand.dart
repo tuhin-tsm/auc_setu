@@ -3,7 +3,7 @@ import 'package:auc_setu/widgets/cards/playing_card.dart';
 import 'package:flutter/material.dart';
 
 class Hand extends StatelessWidget {
-  final List<CardModel> cards;
+  final List<PCardModel> cards;
   final bool isDisabled;
   final bool isVisible;
   final double indent;
@@ -13,7 +13,7 @@ class Hand extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> getCards(List<CardModel> items) {
+    List<Widget> getCards(List<PCardModel> items) {
       List<Widget> list = [];
       for (var i = 0; i < items.length; i++) {
         list.add(Positioned(
@@ -33,9 +33,9 @@ class Hand extends StatelessWidget {
       child: Stack(
         alignment: Alignment.centerLeft,
         children: [
-          Expanded(
+          /* Expanded(
             child: Container(),
-          ),
+          ), */
           ...getCards(cards),
         ],
       ),

@@ -1,3 +1,4 @@
+import 'package:auc_setu/model/card.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:auc_setu/widgets/cards/playing_card_visible.dart';
@@ -14,9 +15,8 @@ class PlayingCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const double cardHeight = 75.0;
-    const double cardWidth = cardHeight * 0.7;
-    const double iconWidth = cardWidth * 0.5;
+    final standardCardDimensions = PCardDimensions(75.0);
+    final draggedCardDimensions = PCardDimensions(100.0);
 
     void _handleTap() {
       if (!isDisabled) {
@@ -27,12 +27,32 @@ class PlayingCard extends StatelessWidget {
     return InkWell(
         onTap: _handleTap,
         child: Center(
-            child: Container(
-                height: cardHeight,
-                width: cardWidth,
-                // child: PlayingCardVisible(iconWidth, rank, suitName)
-                child: isVisible
-                    ? PlayingCardVisible(iconWidth, rank, suitName)
-                    : PlayingCardHidden())));
+            child: isDisabled
+                ? Container(
+                    height: standardCardDimensions.height,
+                    width: standardCardDimensions.width,
+                    child: isVisible
+                        ? PlayingCardVisible(
+                            standardCardDimensions.iconWidth, rank, suitName)
+                        : PlayingCardHidden())
+                : LongPressDraggable(
+                    data: rank,
+                    dragAnchorStrategy: childDragAnchorStrategy,
+                    child: Container(
+                        height: standardCardDimensions.height,
+                        width: standardCardDimensions.width,
+                        child: PlayingCardVisible(
+                            standardCardDimensions.iconWidth, rank, suitName)),
+                    childWhenDragging: Container(),
+                    feedback: DefaultTextStyle(
+                        style: TextStyle(),
+                        child: Container(
+                            height: draggedCardDimensions.height,
+                            width: draggedCardDimensions.width,
+                            child: PlayingCardVisible(
+                                draggedCardDimensions.iconWidth,
+                                rank,
+                                suitName))),
+                  )));
   }
 }

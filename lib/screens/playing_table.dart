@@ -12,20 +12,20 @@ class PlayingTable extends StatefulWidget {
 }
 
 class _PlayingTableState extends State<PlayingTable> {
-  List<CardModel> cards = [
-    CardModel(Heart.color, 'A', Heart.suit),
-    CardModel(Heart.color, 'Q', Heart.suit),
-    CardModel(Heart.color, '10', Heart.suit),
-    CardModel(Heart.color, '9', Heart.suit),
-    CardModel(Spade.color, 'K', Spade.suit),
-    CardModel(Spade.color, '8', Spade.suit),
-    CardModel(Diamond.color, 'A', Diamond.suit),
-    CardModel(Diamond.color, 'J', Diamond.suit),
-    CardModel(Diamond.color, '8', Diamond.suit),
-    CardModel(Diamond.color, '6', Heart.suit),
-    CardModel(Club.color, 'J', Club.suit),
-    CardModel(Club.color, '7', Club.suit),
-    CardModel(Club.color, '3', Club.suit),
+  List<PCardModel> cards = [
+    PCardModel(Heart.color, 'A', Heart.suit),
+    PCardModel(Heart.color, 'Q', Heart.suit),
+    PCardModel(Heart.color, '10', Heart.suit),
+    PCardModel(Heart.color, '9', Heart.suit),
+    PCardModel(Spade.color, 'K', Spade.suit),
+    PCardModel(Spade.color, '8', Spade.suit),
+    PCardModel(Diamond.color, 'A', Diamond.suit),
+    PCardModel(Diamond.color, 'J', Diamond.suit),
+    PCardModel(Diamond.color, '8', Diamond.suit),
+    PCardModel(Diamond.color, '6', Heart.suit),
+    PCardModel(Club.color, 'J', Club.suit),
+    PCardModel(Club.color, '7', Club.suit),
+    PCardModel(Club.color, '3', Club.suit),
   ];
 
   @override

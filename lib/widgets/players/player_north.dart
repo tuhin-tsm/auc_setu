@@ -3,7 +3,7 @@ import 'package:auc_setu/widgets/playing_table/hand.dart';
 import 'package:flutter/material.dart';
 
 class PlayerNorth extends StatelessWidget {
-  final List<CardModel> cards;
+  final List<PCardModel> cards;
 
   PlayerNorth(this.cards);
 
