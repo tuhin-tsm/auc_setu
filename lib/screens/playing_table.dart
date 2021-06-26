@@ -16,8 +16,53 @@ class PlayingTable extends StatefulWidget {
 class _PlayingTableState extends State<PlayingTable> {
   final double verticalCardHeight = 90.0;
 
-  List<PCardModel> cards = [
+  List<PCardModel> northCards = [
+    PCardModel('7', Heart.suit),
+    PCardModel('10', Spade.suit),
+    PCardModel('A', Spade.suit),
+    PCardModel('Q', Spade.suit),
+    PCardModel('9', Spade.suit),
+    PCardModel('6', Spade.suit),
+    PCardModel('5', Spade.suit),
+    PCardModel('4', Spade.suit),
+    PCardModel('9', Diamond.suit),
+    PCardModel('A', Club.suit),
+    PCardModel('8', Club.suit),
+    PCardModel('2', Club.suit),
+  ];
+
+  List<PCardModel> eastCards = [
+    PCardModel('Q', Heart.suit),
+    PCardModel('10', Heart.suit),
+    PCardModel('9', Heart.suit),
+    PCardModel('K', Spade.suit),
+    PCardModel('8', Spade.suit),
+    PCardModel('A', Diamond.suit),
+    PCardModel('J', Diamond.suit),
+    PCardModel('8', Diamond.suit),
+    PCardModel('6', Diamond.suit),
+    PCardModel('J', Club.suit),
+    PCardModel('7', Club.suit),
+    PCardModel('3', Club.suit),
+  ];
+
+  List<PCardModel> southCards = [
     PCardModel('A', Heart.suit),
+    PCardModel('Q', Heart.suit),
+    PCardModel('10', Heart.suit),
+    PCardModel('9', Heart.suit),
+    PCardModel('K', Spade.suit),
+    PCardModel('8', Spade.suit),
+    PCardModel('A', Diamond.suit),
+    PCardModel('J', Diamond.suit),
+    PCardModel('8', Diamond.suit),
+    PCardModel('6', Diamond.suit),
+    PCardModel('J', Club.suit),
+    PCardModel('7', Club.suit),
+    PCardModel('3', Club.suit),
+  ];
+
+  List<PCardModel> westCards = [
     PCardModel('Q', Heart.suit),
     PCardModel('10', Heart.suit),
     PCardModel('9', Heart.suit),
@@ -42,8 +87,26 @@ class _PlayingTableState extends State<PlayingTable> {
     required CurrentlyPlayingCardModel card,
   }) {
     setState(() {
-      cards.removeWhere(
-          (item) => item.suit == card.suit && item.rank == card.rank);
+      switch (card.player) {
+        case Player.North:
+          northCards.removeWhere(
+              (item) => item.suit == card.suit && item.rank == card.rank);
+          break;
+        case Player.East:
+          eastCards.removeWhere(
+              (item) => item.suit == card.suit && item.rank == card.rank);
+          break;
+        case Player.South:
+          southCards.removeWhere(
+              (item) => item.suit == card.suit && item.rank == card.rank);
+          break;
+        case Player.West:
+          westCards.removeWhere(
+              (item) => item.suit == card.suit && item.rank == card.rank);
+          break;
+        default:
+      }
+
       currentlyPlayingCards.add(card);
     });
   }
@@ -67,7 +130,7 @@ class _PlayingTableState extends State<PlayingTable> {
               padding: const EdgeInsets.symmetric(vertical: 12),
               child: RotatedBox(
                 quarterTurns: 3,
-                child: PlayerWest(cards),
+                child: PlayerWest(westCards),
               ),
             ),
           ),
@@ -76,7 +139,7 @@ class _PlayingTableState extends State<PlayingTable> {
             child: Column(
               children: [
                 Expanded(
-                  child: PlayerNorth(cards, (cardPlaying) {
+                  child: PlayerNorth(northCards, (cardPlaying) {
                     _playCard(card: cardPlaying);
                   }),
                 ),
@@ -97,7 +160,7 @@ class _PlayingTableState extends State<PlayingTable> {
                           },
                         ))),
                 Expanded(
-                  child: PlayerSouth(cards, (cardPlaying) {
+                  child: PlayerSouth(southCards, (cardPlaying) {
                     _playCard(card: cardPlaying);
                   }),
                 ),
@@ -109,7 +172,7 @@ class _PlayingTableState extends State<PlayingTable> {
               padding: const EdgeInsets.symmetric(vertical: 12),
               child: RotatedBox(
                 quarterTurns: 1,
-                child: PlayerEast(cards),
+                child: PlayerEast(eastCards),
               ),
             ),
           ),
