@@ -18,7 +18,7 @@ class HandPlayingCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final standardCardDimensions = PCardDimensions(75.0);
-    final draggedCardDimensions = PCardDimensions(100.0);
+    final draggedCardDimensions = PCardDimensions(120.0);
 
     final CurrentlyPlayingCardModel currentlyPlayingCard =
         CurrentlyPlayingCardModel(Player.South, rank, suitName);
