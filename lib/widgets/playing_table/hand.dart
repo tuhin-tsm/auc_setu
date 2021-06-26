@@ -1,5 +1,5 @@
 import 'package:auc_setu/model/card.dart';
-import 'package:auc_setu/widgets/cards/playing_card.dart';
+import 'package:auc_setu/widgets/cards/hand_playing_card.dart';
 import 'package:flutter/material.dart';
 
 class Hand extends StatelessWidget {
@@ -18,7 +18,7 @@ class Hand extends StatelessWidget {
       for (var i = 0; i < items.length; i++) {
         list.add(Positioned(
           left: indent * i,
-          child: PlayingCard(
+          child: HandPlayingCard(
             items[i].rank,
             items[i].suit,
             isDisabled: isDisabled,

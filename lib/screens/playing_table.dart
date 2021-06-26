@@ -4,6 +4,7 @@ import 'package:auc_setu/widgets/players/player_east.dart';
 import 'package:auc_setu/widgets/players/player_north.dart';
 import 'package:auc_setu/widgets/players/player_south.dart';
 import 'package:auc_setu/widgets/players/player_west.dart';
+import 'package:auc_setu/widgets/playing_table/play_area.dart';
 import 'package:flutter/material.dart';
 
 class PlayingTable extends StatefulWidget {
@@ -12,6 +13,8 @@ class PlayingTable extends StatefulWidget {
 }
 
 class _PlayingTableState extends State<PlayingTable> {
+  final double verticalCardHeight = 90.0;
+
   List<PCardModel> cards = [
     PCardModel(Heart.color, 'A', Heart.suit),
     PCardModel(Heart.color, 'Q', Heart.suit),
@@ -54,7 +57,12 @@ class _PlayingTableState extends State<PlayingTable> {
                 ),
                 Expanded(
                   flex: 2,
-                  child: Container(),
+                  child: Container(
+                      width: verticalCardHeight * 2 + 20,
+                      /* decoration: BoxDecoration(
+                        color: Colors.orange[200],
+                      ), */
+                      child: PlayArea(verticalCardHeight)),
                 ),
                 Expanded(
                   child: PlayerSouth(cards),

@@ -5,7 +5,7 @@ void main() {
   // debugPaintSizeEnabled = true;
 
   runApp(MaterialApp(
-    title: 'My app', // used by the OS task switcher
+    title: 'Auction Setu', // used by the OS task switcher
     home: SafeArea(
       child: Scaffold(body: PlayingTable()),
     ),

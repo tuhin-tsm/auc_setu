@@ -4,13 +4,13 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:auc_setu/widgets/cards/playing_card_visible.dart';
 import 'package:auc_setu/widgets/cards/playing_card_hidden.dart';
 
-class PlayingCard extends StatelessWidget {
+class HandPlayingCard extends StatelessWidget {
   final bool isDisabled;
   final bool isVisible;
   final String rank;
   final String suitName;
 
-  PlayingCard(this.rank, this.suitName,
+  HandPlayingCard(this.rank, this.suitName,
       {this.isDisabled = true, this.isVisible = false});
 
   @override
