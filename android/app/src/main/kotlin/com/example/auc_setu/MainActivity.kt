@@ -1,4 +1,4 @@
-package com.example.auc_setu
+package com.example.tsm.auc_setu
 
 import io.flutter.embedding.android.FlutterActivity
 

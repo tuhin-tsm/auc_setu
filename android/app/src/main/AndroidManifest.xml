@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.auc_setu">
+    package="com.example.tsm.auc_setu">
    <application
-        android:label="auc_setu"
+        android:label="Auction Setu"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
