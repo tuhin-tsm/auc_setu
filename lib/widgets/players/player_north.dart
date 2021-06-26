@@ -4,11 +4,16 @@ import 'package:flutter/material.dart';
 
 class PlayerNorth extends StatelessWidget {
   final List<PCardModel> cards;
+  final Function onCardPlay;
 
-  PlayerNorth(this.cards);
+  PlayerNorth(this.cards, this.onCardPlay);
 
   @override
   Widget build(BuildContext context) {
-    return Hand(cards, isVisible: true);
+    return Hand(
+      cards,
+      isVisible: true,
+      onCardPlay: onCardPlay,
+    );
   }
 }

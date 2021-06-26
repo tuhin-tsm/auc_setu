@@ -38,7 +38,7 @@ class _PlayingTableState extends State<PlayingTable> {
     CurrentlyPlayingCardModel(Player.West, '8', Club.suit),
   ];
 
-  void _cardDroppedOnPlayArea({
+  void _playCard({
     required CurrentlyPlayingCardModel card,
   }) {
     setState(() {
@@ -46,6 +46,12 @@ class _PlayingTableState extends State<PlayingTable> {
           (item) => item.suit == card.suit && item.rank == card.rank);
       currentlyPlayingCards.add(card);
     });
+  }
+
+  void _cardDroppedOnPlayArea({
+    required CurrentlyPlayingCardModel card,
+  }) {
+    _playCard(card: card);
   }
 
   @override
@@ -70,7 +76,9 @@ class _PlayingTableState extends State<PlayingTable> {
             child: Column(
               children: [
                 Expanded(
-                  child: PlayerNorth(cards),
+                  child: PlayerNorth(cards, (cardPlaying) {
+                    _playCard(card: cardPlaying);
+                  }),
                 ),
                 Expanded(
                     flex: 2,
@@ -89,7 +97,9 @@ class _PlayingTableState extends State<PlayingTable> {
                           },
                         ))),
                 Expanded(
-                  child: PlayerSouth(cards),
+                  child: PlayerSouth(cards, (cardPlaying) {
+                    _playCard(card: cardPlaying);
+                  }),
                 ),
               ],
             ),

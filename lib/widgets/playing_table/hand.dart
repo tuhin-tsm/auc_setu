@@ -7,9 +7,15 @@ class Hand extends StatelessWidget {
   final bool isDisabled;
   final bool isVisible;
   final double indent;
+  final Function onCardPlay;
+
+  static void defaultMethod() {}
 
   Hand(this.cards,
-      {this.isDisabled = true, this.isVisible = false, this.indent = 32.0});
+      {this.isDisabled = true,
+      this.isVisible = false,
+      this.indent = 32.0,
+      this.onCardPlay = defaultMethod});
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +29,7 @@ class Hand extends StatelessWidget {
             items[i].suit,
             isDisabled: isDisabled,
             isVisible: isVisible,
+            onCardPlay: onCardPlay,
           ),
         ));
       }

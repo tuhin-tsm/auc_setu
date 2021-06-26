@@ -1,7 +1,6 @@
 import 'package:auc_setu/model/card.dart';
 import 'package:auc_setu/model/player.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:auc_setu/widgets/cards/playing_card_visible.dart';
 import 'package:auc_setu/widgets/cards/playing_card_hidden.dart';
 
@@ -10,10 +9,15 @@ class HandPlayingCard extends StatelessWidget {
   final bool isVisible;
   final String rank;
   final String suitName;
+  final Function onCardPlay;
+
+  static void defaultMethod() {}
 
   // TODO: refactor rank and suit into PCardModel
   HandPlayingCard(this.rank, this.suitName,
-      {this.isDisabled = true, this.isVisible = false});
+      {this.isDisabled = true,
+      this.isVisible = false,
+      this.onCardPlay = defaultMethod});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +29,11 @@ class HandPlayingCard extends StatelessWidget {
 
     void _handleTap() {
       if (!isDisabled) {
-        Fluttertoast.showToast(msg: "$rank of $suitName clicked");
+        // TODO: Hard coded South here. Refactor and accept PCardModel
+        // Check previous todo
+        final CurrentlyPlayingCardModel cpCard =
+            CurrentlyPlayingCardModel(Player.South, rank, suitName);
+        onCardPlay(cpCard);
       }
     }
 
