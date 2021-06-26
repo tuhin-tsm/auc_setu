@@ -7,7 +7,10 @@
 
 
  ### Widgets
- - Playing Card
+ PlayerTable
+  - PlayerSouth(cards, _playCard)
+    - Hand
+      - HandPlayingCard
 
 
  ### Notes
