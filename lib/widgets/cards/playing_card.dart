@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:auc_setu/model/suit.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:auc_setu/widgets/cards/playing_card_visible.dart';
+import 'package:auc_setu/widgets/cards/playing_card_hidden.dart';
 
 class PlayingCard extends StatelessWidget {
+  final bool isDisabled;
+  final bool isVisible;
   final String rank;
   final String suitName;
 
-  PlayingCard(this.rank, this.suitName);
+  PlayingCard(this.rank, this.suitName,
+      {this.isDisabled = true, this.isVisible = false});
 
   @override
   Widget build(BuildContext context) {
@@ -14,45 +18,21 @@ class PlayingCard extends StatelessWidget {
     const double cardWidth = cardHeight * 0.7;
     const double iconWidth = cardWidth * 0.5;
 
-    const suitTextStyle =
-        TextStyle(fontSize: iconWidth, fontWeight: FontWeight.bold);
-    const blackTextStyle = TextStyle(color: BLACK_SUIT_COLOR);
-    const redTextStyle = TextStyle(color: RED_SUIT_COLOR);
+    void _handleTap() {
+      if (!isDisabled) {
+        Fluttertoast.showToast(msg: "$rank of $suitName clicked");
+      }
+    }
 
     return InkWell(
-        onTap: () {
-          Fluttertoast.showToast(msg: "$rank of $suitName clicked");
-        },
+        onTap: _handleTap,
         child: Center(
             child: Container(
-          height: cardHeight,
-          width: cardWidth,
-          child: Stack(
-            children: [
-              Image(
-                image: AssetImage('assets/images/cards/card_bg_3x.png'),
-              ),
-              Container(
-                  alignment: Alignment.bottomCenter,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Text(
-                        rank,
-                        style: suitTextStyle.merge(
-                            suitName == Club.suit || suitName == Spade.suit
-                                ? blackTextStyle
-                                : redTextStyle),
-                      ),
-                      Image(
-                        image: AssetImage(
-                            'assets/images/cards/$suitName/card_${suitName}_3x.png'),
-                        width: iconWidth,
-                      ),
-                    ],
-                  )),
-            ],
-          ),
-        )));
+                height: cardHeight,
+                width: cardWidth,
+                // child: PlayingCardVisible(iconWidth, rank, suitName)
+                child: isVisible
+                    ? PlayingCardVisible(iconWidth, rank, suitName)
+                    : PlayingCardHidden())));
   }
 }

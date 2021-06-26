@@ -1,4 +1,4 @@
-`adb connect 192.168.0.138:5555`
+`adb connect 192.168.0.238:5555`
 
 Container(
   height: 64,

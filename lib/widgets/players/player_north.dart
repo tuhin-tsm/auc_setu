@@ -9,6 +9,6 @@ class PlayerNorth extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Hand(cards);
+    return Hand(cards, isVisible: true);
   }
 }
