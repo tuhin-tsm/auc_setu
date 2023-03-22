@@ -6,4 +6,4 @@ A new Flutter project.
 
 ### Initial screenshot
 
-![Screenshot](docs/auc-setu-initial-ss.jpg)
+![Screenshot](docs/auc_setu_demo_board.gif)
